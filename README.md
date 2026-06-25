@@ -1,16 +1,68 @@
-# React + Vite
+# RouteFlow
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+RouteFlow é uma aplicação web criada para ajudar na organização de rotas de entrega de forma simples, prática e visual.
 
-Currently, two official plugins are available:
+A ideia surgiu a partir de uma necessidade real: reduzir o tempo gasto planejando circuitos manualmente e permitir que o usuário organize as paradas de acordo com prioridades, horários e situações do dia a dia.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+---
 
-## React Compiler
+## Funcionalidades
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+- Cadastro de paradas da rota
+- Definição de prioridade: Alta, Normal ou Baixa
+- Campo para horário ou observação da entrega
+- Organização manual da ordem das paradas
+- Botões para mover uma parada para cima ou para baixo
+- Remoção de paradas
+- Marcação de parada como concluída
+- Botão para limpar toda a rota
+- Salvamento automático no navegador com Local Storage
 
-## Expanding the ESLint configuration
+---
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+## Tecnologias utilizadas
+
+- React
+- JavaScript
+- HTML5
+- CSS3
+- Vite
+- Local Storage
+
+---
+
+## Objetivo do projeto
+
+O objetivo do RouteFlow é simular um sistema simples para planejamento de entregas, onde o usuário pode montar a rota com base em informações reais que nem sempre um sistema automático consegue prever, como:
+
+- horários específicos de entrega;
+- prioridade de determinados clientes;
+- necessidade de reorganizar a rota durante o dia;
+- entregas já concluídas;
+- observações importantes sobre cada parada.
+
+---
+
+## Status do projeto
+
+Em desenvolvimento.
+
+Funcionalidades atuais já implementadas:
+
+- Cadastro de paradas
+- Prioridade por parada
+- Observação ou horário
+- Reordenação manual
+- Remoção de paradas
+- Marcação de conclusão
+- Salvamento no navegador
+
+---
+
+## Como executar o projeto
+
+Clone o repositório:
+
+```bash
+git clone https://github.com/Brunnomk/routeflow.git
+```
