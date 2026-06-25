@@ -1,14 +1,27 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import './App.css';
 
 function App() {
   const [novaParada, setNovaParada] = useState('');
-  const [paradas, setParadas] = useState([
-    'Saída - Estremoz',
-    'Cliente A - Entregar depois das 10h',
-    'Cliente B - Prioridade alta',
-    'Cliente C - Recebe até 12h',
-  ]);
+
+  const [paradas, setParadas] = useState(() => {
+    const paradasSalvas = localStorage.getItem('routeflow-paradas');
+
+    if (paradasSalvas) {
+      return JSON.parse(paradasSalvas);
+    }
+
+    return [
+      'Saída - Estremoz',
+      'Cliente A - Entregar depois das 10h',
+      'Cliente B - Prioridade alta',
+      'Cliente C - Recebe até 12h',
+    ];
+  });
+
+  useEffect(() => {
+    localStorage.setItem('routeflow-paradas', JSON.stringify(paradas));
+  }, [paradas]);
 
   function adicionarParada() {
     if (novaParada.trim() === '') {
