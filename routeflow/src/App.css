@@ -219,3 +219,41 @@ button.secondary {
     flex-direction: column;
   }
 }
+
+.route-actions {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+}
+
+.move-button {
+  width: 32px;
+  height: 32px;
+  padding: 0;
+  border-radius: 50%;
+  background: rgba(56, 189, 248, 0.15);
+  color: #38bdf8;
+  border: 1px solid rgba(56, 189, 248, 0.35);
+  font-size: 1rem;
+}
+
+.move-button:hover {
+  background: #38bdf8;
+  color: #020617;
+  box-shadow: 0 0 15px rgba(56, 189, 248, 0.35);
+}
+
+.move-button:disabled {
+  opacity: 0.3;
+  cursor: not-allowed;
+  transform: none;
+  box-shadow: none;
+}
+
+.empty-message {
+  color: #cbd5e1;
+  background: rgba(30, 41, 59, 0.8);
+  padding: 1rem;
+  border-radius: 14px;
+  border: 1px solid rgba(148, 163, 184, 0.15);
+}
