@@ -362,3 +362,27 @@ button.secondary {
 .route-item.completed .route-info small {
   color: #bbf7d0;
 }
+
+.map-view {
+  width: 100%;
+  height: 220px;
+  margin-bottom: 1.5rem;
+  border-radius: 18px;
+  overflow: hidden;
+  border: 1px solid rgba(148, 163, 184, 0.25);
+}
+
+.leaflet-map {
+  width: 100%;
+  height: 100%;
+}
+
+.leaflet-popup-content-wrapper {
+  background: #0f172a;
+  color: #ffffff;
+  border-radius: 12px;
+}
+
+.leaflet-popup-tip {
+  background: #0f172a;
+}
