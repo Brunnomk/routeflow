@@ -161,3 +161,61 @@ button.secondary {
     width: 100%;
   }
 }
+
+.form-parada {
+  display: flex;
+  gap: 1rem;
+  margin-top: 1rem;
+  max-width: 600px;
+}
+
+.form-parada input {
+  flex: 1;
+  padding: 0.9rem 1rem;
+  border-radius: 12px;
+  border: 1px solid rgba(148, 163, 184, 0.3);
+  background: rgba(15, 23, 42, 0.9);
+  color: #ffffff;
+  outline: none;
+  font-size: 0.95rem;
+}
+
+.form-parada input::placeholder {
+  color: #94a3b8;
+}
+
+.form-parada input:focus {
+  border-color: #38bdf8;
+  box-shadow: 0 0 0 3px rgba(56, 189, 248, 0.15);
+}
+
+.route-item {
+  justify-content: space-between;
+}
+
+.route-item p {
+  flex: 1;
+}
+
+.remove-button {
+  width: 32px;
+  height: 32px;
+  padding: 0;
+  border-radius: 50%;
+  background: rgba(239, 68, 68, 0.15);
+  color: #f87171;
+  border: 1px solid rgba(239, 68, 68, 0.35);
+  font-size: 0.8rem;
+}
+
+.remove-button:hover {
+  background: #ef4444;
+  color: #ffffff;
+  box-shadow: 0 0 15px rgba(239, 68, 68, 0.35);
+}
+
+@media (max-width: 500px) {
+  .form-parada {
+    flex-direction: column;
+  }
+}

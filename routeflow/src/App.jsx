@@ -1,6 +1,25 @@
+import { useState } from 'react';
 import './App.css';
 
 function App() {
+  const [novaParada, setNovaParada] = useState('');
+  const [paradas, setParadas] = useState(['Saída - Estremoz', 'Cliente A', 'Cliente B', 'Cliente C']);
+
+  function adicionarParada() {
+    if (novaParada.trim() === '') {
+      alert('Digite o nome da parada.');
+      return;
+    }
+
+    setParadas([...paradas, novaParada]);
+    setNovaParada('');
+  }
+
+  function removerParada(index) {
+    const novaLista = paradas.filter((_, i) => i !== index);
+    setParadas(novaLista);
+  }
+
   return (
     <main className="app">
       <section className="hero">
@@ -14,8 +33,18 @@ function App() {
             entregas.
           </p>
 
+          <div className="form-parada">
+            <input
+              type="text"
+              placeholder="Digite uma nova parada"
+              value={novaParada}
+              onChange={(event) => setNovaParada(event.target.value)}
+            />
+
+            <button onClick={adicionarParada}>Adicionar parada</button>
+          </div>
+
           <div className="hero-actions">
-            <button>Adicionar parada</button>
             <button className="secondary">Ver rota</button>
           </div>
         </div>
@@ -24,25 +53,17 @@ function App() {
           <h2>Rota do dia</h2>
 
           <div className="route-list">
-            <div className="route-item">
-              <span>1</span>
-              <p>Saída - Estremoz</p>
-            </div>
+            {paradas.map((parada, index) => (
+              <div className="route-item" key={index}>
+                <span>{index + 1}</span>
 
-            <div className="route-item">
-              <span>2</span>
-              <p>Cliente A</p>
-            </div>
+                <p>{parada}</p>
 
-            <div className="route-item">
-              <span>3</span>
-              <p>Cliente B</p>
-            </div>
-
-            <div className="route-item">
-              <span>4</span>
-              <p>Cliente C</p>
-            </div>
+                <button className="remove-button" onClick={() => removerParada(index)}>
+                  X
+                </button>
+              </div>
+            ))}
           </div>
         </div>
       </section>
