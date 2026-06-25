@@ -18,21 +18,25 @@ function App() {
         nome: 'Saída - Estremoz',
         prioridade: 'Alta',
         observacao: 'Início da rota',
+        concluida: false,
       },
       {
         nome: 'Cliente A',
         prioridade: 'Normal',
         observacao: 'Entregar depois das 10h',
+        concluida: false,
       },
       {
         nome: 'Cliente B',
         prioridade: 'Alta',
         observacao: 'Entrega urgente',
+        concluida: false,
       },
       {
         nome: 'Cliente C',
         prioridade: 'Baixa',
         observacao: 'Recebe até 12h',
+        concluida: false,
       },
     ];
   });
@@ -51,6 +55,7 @@ function App() {
       nome: novaParada,
       prioridade: prioridade,
       observacao: observacao || 'Sem observação',
+      concluida: false,
     };
 
     setParadas([...paradas, parada]);
@@ -61,6 +66,21 @@ function App() {
 
   function removerParada(index) {
     const novaLista = paradas.filter((_, i) => i !== index);
+    setParadas(novaLista);
+  }
+
+  function alternarConcluida(index) {
+    const novaLista = paradas.map((parada, i) => {
+      if (i === index) {
+        return {
+          ...parada,
+          concluida: !parada.concluida,
+        };
+      }
+
+      return parada;
+    });
+
     setParadas(novaLista);
   }
 
@@ -144,7 +164,7 @@ function App() {
           ) : (
             <div className="route-list">
               {paradas.map((parada, index) => (
-                <div className="route-item" key={index}>
+                <div className={`route-item ${parada.concluida ? 'completed' : ''}`} key={index}>
                   <span>{index + 1}</span>
 
                   <div className="route-info">
@@ -156,6 +176,10 @@ function App() {
                   </div>
 
                   <div className="route-actions">
+                    <button className="done-button" onClick={() => alternarConcluida(index)}>
+                      ✓
+                    </button>
+
                     <button className="move-button" onClick={() => moverParaCima(index)} disabled={index === 0}>
                       ↑
                     </button>
