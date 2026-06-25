@@ -3,6 +3,8 @@ import './App.css';
 
 function App() {
   const [novaParada, setNovaParada] = useState('');
+  const [prioridade, setPrioridade] = useState('Normal');
+  const [observacao, setObservacao] = useState('');
 
   const [paradas, setParadas] = useState(() => {
     const paradasSalvas = localStorage.getItem('routeflow-paradas');
@@ -12,10 +14,26 @@ function App() {
     }
 
     return [
-      'Saída - Estremoz',
-      'Cliente A - Entregar depois das 10h',
-      'Cliente B - Prioridade alta',
-      'Cliente C - Recebe até 12h',
+      {
+        nome: 'Saída - Estremoz',
+        prioridade: 'Alta',
+        observacao: 'Início da rota',
+      },
+      {
+        nome: 'Cliente A',
+        prioridade: 'Normal',
+        observacao: 'Entregar depois das 10h',
+      },
+      {
+        nome: 'Cliente B',
+        prioridade: 'Alta',
+        observacao: 'Entrega urgente',
+      },
+      {
+        nome: 'Cliente C',
+        prioridade: 'Baixa',
+        observacao: 'Recebe até 12h',
+      },
     ];
   });
 
@@ -29,8 +47,16 @@ function App() {
       return;
     }
 
-    setParadas([...paradas, novaParada]);
+    const parada = {
+      nome: novaParada,
+      prioridade: prioridade,
+      observacao: observacao || 'Sem observação',
+    };
+
+    setParadas([...paradas, parada]);
     setNovaParada('');
+    setPrioridade('Normal');
+    setObservacao('');
   }
 
   function removerParada(index) {
@@ -82,12 +108,25 @@ function App() {
           <div className="form-parada">
             <input
               type="text"
-              placeholder="Digite uma nova parada ou observação"
+              placeholder="Nome da parada"
               value={novaParada}
               onChange={(event) => setNovaParada(event.target.value)}
             />
 
-            <button onClick={adicionarParada}>Adicionar parada</button>
+            <select value={prioridade} onChange={(event) => setPrioridade(event.target.value)}>
+              <option value="Alta">Alta</option>
+              <option value="Normal">Normal</option>
+              <option value="Baixa">Baixa</option>
+            </select>
+
+            <input
+              type="text"
+              placeholder="Horário ou observação"
+              value={observacao}
+              onChange={(event) => setObservacao(event.target.value)}
+            />
+
+            <button onClick={adicionarParada}>Adicionar</button>
           </div>
 
           <div className="hero-actions">
@@ -108,7 +147,13 @@ function App() {
                 <div className="route-item" key={index}>
                   <span>{index + 1}</span>
 
-                  <p>{parada}</p>
+                  <div className="route-info">
+                    <p>{parada.nome}</p>
+
+                    <small>
+                      Prioridade: {parada.prioridade} · {parada.observacao}
+                    </small>
+                  </div>
 
                   <div className="route-actions">
                     <button className="move-button" onClick={() => moverParaCima(index)} disabled={index === 0}>
